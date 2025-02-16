@@ -2,21 +2,23 @@ import React from 'react'
 import { useState } from 'react'
 import { useAuth } from '../Context/AuthProvider'
 export default function Login() {
-    const {login} = useAuth() // Get login function from AuthProvider
+    const {loginAction} = useAuth() // Get login function from AuthProvider
 const [input, setInput] = useState({
     email: '',
     password: ''})
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (!input.email || !input.password) {
-            alert('Please fill in all fields')
+        if (input.email !=="" && input.password !=="") {
+            loginAction(input)
             return
         }
-        console.log(input)
-        alert('Form submitted')
-        login(input)
+        
+            alert('Please provide a valid input')
+           
     }
+        
+       
     const handleInputChange = (e) => {
         const { name, value } = e.target;
     
