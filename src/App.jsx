@@ -1,7 +1,7 @@
 import React from 'react'
 import Login from './Components/login/Login'
 import Dashboard from './Components/Dashboard'
-import {   Router ,Routes, Route } from 'react-router-dom'
+import {   BrowserRouter ,Routes, Route } from 'react-router-dom'
 import AuthProvider from './Components/Context/AuthProvider'
 import PrivateRoute from './Components/PrivateRoute'
 function App() {
@@ -11,7 +11,7 @@ function App() {
       
         <AuthProvider>
         <Routes>
-        <Route path ='/login' element={<Login/>}/>
+        <Route path ='/' element={<Login/>}/>
         <Route element={<PrivateRoute/>}>
 <Route path='/dashboard' element={<Dashboard/>}/>
         </Route>

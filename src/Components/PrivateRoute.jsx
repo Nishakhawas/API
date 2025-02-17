@@ -5,7 +5,7 @@ export default function PrivateRoute() {
    
     const user = useAuth()
     if(!user)
-        return<Navigate to='/login'/> // Redirect to login page if user is not logged in
+        return<Navigate to='/'/> // Redirect to login page if user is not logged in
 
     
   return (
