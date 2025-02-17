@@ -1,31 +1,34 @@
-import React, { createContext, use } from 'react'
+import React, { createContext } from 'react'
 import { useState,useContext } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 const AuthContext = createContext()
 
 export default function AuthProvider({children}) {
+  // const navigate = useNavigate()
   const [user, setUser] = useState(null)
-
   //Function to login user
   const login = (email, password) => {
     setUser({email, password}) // store user data in state
     alert('User logged in')
   }
 const loginAction = async(data)=>{
+
   try{
     const response = await fetch('https://jsonplaceholder.typicode.com/posts',{
       method:'POST',
       body:JSON.stringify(data),
       headers:{
         'Content-type':'application/json'
-      }
+      },
      
     })
     alert ('User logged in')
     const resData = await response.json()
     if (resData){
-      setUser(resData.user)
+      setUser(resData)
+      // navigate('/dashboard')
     }
+   
     console.log(resData)
   }catch(error){
     console.log(error)

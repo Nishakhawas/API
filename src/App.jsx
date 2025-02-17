@@ -1,21 +1,23 @@
 import React from 'react'
 import Login from './Components/login/Login'
 import Dashboard from './Components/Dashboard'
-import { Router,Routes, Route } from 'react-router-dom'
+import {   Router ,Routes, Route } from 'react-router-dom'
 import AuthProvider from './Components/Context/AuthProvider'
+import PrivateRoute from './Components/PrivateRoute'
 function App() {
 
   return (
     <div>
-      <Router>
+      
         <AuthProvider>
         <Routes>
         <Route path ='/login' element={<Login/>}/>
-         <Dashboard/>
- 
+        <Route element={<PrivateRoute/>}>
+<Route path='/dashboard' element={<Dashboard/>}/>
+        </Route>
   </Routes>
   </AuthProvider>
-  </Router>
+  
     </div>
   )
 }
