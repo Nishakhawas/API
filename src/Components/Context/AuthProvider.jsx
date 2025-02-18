@@ -11,9 +11,8 @@ export default function AuthProvider({children}) {
   //Function to login user
   const login = (email, password) => {
     setUser({email, password}) // store user data in state
-    localStorage.setItem('user', JSON.stringify({email,password})) // store user data in local storage
+    localStorage.setItem('user', JSON.stringify(email,password)) // store user data in local storage
     navigate('/dashboard')
-
     alert('User logged in')
   }
 // const loginAction = async(data)=>{
@@ -42,6 +41,7 @@ export default function AuthProvider({children}) {
 
 const logout = () => {
   setUser(null)
+  localStorage.removeItem('user',JSON.stringify({}))
   alert('User logged out')
   navigate('/')
 
